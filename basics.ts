@@ -171,3 +171,42 @@ const formatContact=(value: string | number): string => {
  }
 }
  console.log(formatContact('abc@gmail.com'))
+
+// day 2 interface
+interface Display {
+    show(): string;
+}
+
+class Inter implements Display {
+
+    constructor(private fullName: string) {}
+
+    show(): string {
+        return this.fullName;
+    }
+}
+
+const instance = new Inter("abc");
+
+console.log(instance.show());
+
+//generic
+function even <T extends number>(nums:T[]):T[]{
+    return nums.filter(n=>n%2===0)
+}
+console.log(even([10, 20, 30, 40, 55, 67]));
+
+//promises
+function getData(): Promise<TeamMember[]> {
+    return new Promise(resolve => {
+        setTimeout(() => resolve([
+            { id: 1, name: 'Asha', role: 'admin',status:'failed' }
+        ]), 500);
+    });
+}
+
+async function main() {
+    const data: TeamMember[] = await getData();
+    console.log(data);
+}
+main()

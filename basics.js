@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 // type annotation
 let names = "abc";
 console.log("name", names);
@@ -101,4 +99,34 @@ const formatContact = (value) => {
     }
 };
 console.log(formatContact('abc@gmail.com'));
+class Inter {
+    fullName;
+    constructor(fullName) {
+        this.fullName = fullName;
+    }
+    show() {
+        return this.fullName;
+    }
+}
+const instance = new Inter("abc");
+console.log(instance.show());
+//generic
+function even(nums) {
+    return nums.filter(n => n % 2 === 0);
+}
+console.log(even([10, 20, 30, 40, 55, 67]));
+//promises
+function getData() {
+    return new Promise(resolve => {
+        setTimeout(() => resolve([
+            { id: 1, name: 'Asha', role: 'admin', status: 'failed' }
+        ]), 500);
+    });
+}
+async function main() {
+    const data = await getData();
+    console.log(data);
+}
+main();
+export {};
 //# sourceMappingURL=basics.js.map
